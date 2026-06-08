@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Produk - Beranda Coffee</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -435,8 +436,11 @@
     <script>
       feather.replace();
     </script>
-
+    
     <!-- My Javascript -->
     <script src="js/script.js"></script>
+
+    <!-- DeepSeek AI Chat Widget -->
+    @include('components.chat-widget')
   </body>
 </html>
