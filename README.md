@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Projek-RPL
 Projek Akhir RPL Kelompok 8 TIF/2024
 
