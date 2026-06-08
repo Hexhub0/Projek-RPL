@@ -12,42 +12,42 @@ Anggota Kelompok :
 
 ## 1. Deskripsi Proyek
 
-    <br> BerandaCoffee merupakan pengembangan platform layanan coffee shop berbentuk website yang dirancang untuk menjembatani keterbatasan antara pengalaman menikmati kopi secara konvensional dengan kenyamanan teknologi digital. Website ini tidak hanya berfungsi sebagai bentuk proyek yang statis, tetapi juga dapat menjadi sebagai ekosistem layanan mandiri (self-service) bagi pelanggan.
+BerandaCoffee merupakan pengembangan platform layanan coffee shop berbentuk website yang dirancang untuk menjembatani keterbatasan antara pengalaman menikmati kopi secara konvensional dengan kenyamanan teknologi digital. Website ini tidak hanya berfungsi sebagai bentuk proyek yang statis, tetapi juga dapat menjadi sebagai ekosistem layanan mandiri (self-service) bagi pelanggan.
 
 ## 2. Fitur Utama
 
-   <br>2.1 Login dan Registrasi
-   <br>2.2 Favorit Menu
-   <br>2.3 Ulasan Menu
-   <br>2.4 Sorting Menu
-   <br>2.5 Pembayaran Produk 
-   <br>2.6 Status Pemesanan
-   <br>2.7 Riwayat Pemesanan
+   2.1 Login dan Registrasi
+   2.2 Favorit Menu
+   2.3 Ulasan Menu
+   2.4 Sorting Menu
+   2.5 Pembayaran Produk 
+   2.6 Status Pemesanan
+   2.7 Riwayat Pemesanan
 
 ## 3. Teknologi Yang Digunakan
-
-   <br>3.1 Bahasa Pemrograman
-       <br>3.1.1 Frontend
-           <br>HTML
-           <br>CSS
-           <br>JavaScript
-           <br>TypeScript
-           <br>Vite
-       <br>3.1.2 Backend
-           <br>Framework Laravel
-           <br>PHP
-           <br>Nodejs
-           <br>Blade
+### 3.1 Bahasa Pemrograman
+#### 3.1.1 Frontend
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- Vite
+#### 3.1.2 Backend
+- Framework Laravel
+- PHP
+- Nodejs
+- Blade
    
-   <br>3.2 Development Tools
-       <br>3.2.1 Visual Code Studio
-       <br>3.2.2 Git dan GitHub
-       <br>3.2.3 Laravel (Framework Backend)
-       <br>3.2.4 Blade Template Engine
-       <br>3.2.5 Vite (Frontend build tool)
-       <br>3.2.6 Putty
+### 3.2 Development Tools
+       3.2.1 Visual Code Studio
+       3.2.2 Git dan GitHub
+       3.2.3 Laravel (Framework Backend)
+       3.2.4 Blade Template Engine
+       3.2.5 Vite (Frontend build tool)
+       3.2.6 Putty
    
 ## 4. Cara Mengoperasikan Website
+
 ### 4.1 Akses & Registrasi di awal karena akses utama dikunci dan pelanggan baru tidak bisa langsung memesan.
 #### <br>4.1.1 Buat Akun: Pada halaman login, pelanggan mengklik tautan "Belum punya akun? Daftar di sini".
         <br>4.1.2 Isi Data: Jendela popup (modal) halaman DaftarAkun akan muncul. Pelanggan wajib mengisi:
