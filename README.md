@@ -10,10 +10,12 @@ Anggota Kelompok :
 5. Rizky Wira (24051204186)
 
 
-1. Deskripsi Proyek
+## 1. Deskripsi Proyek
+
     <br> BerandaCoffee merupakan pengembangan platform layanan coffee shop berbentuk website yang dirancang untuk menjembatani keterbatasan antara pengalaman menikmati kopi secara konvensional dengan kenyamanan teknologi digital. Website ini tidak hanya berfungsi sebagai bentuk proyek yang statis, tetapi juga dapat menjadi sebagai ekosistem layanan mandiri (self-service) bagi pelanggan.
 
-2. Fitur Utama
+## 2. Fitur Utama
+
    <br>2.1 Login dan Registrasi
    <br>2.2 Favorit Menu
    <br>2.3 Ulasan Menu
@@ -22,7 +24,8 @@ Anggota Kelompok :
    <br>2.6 Status Pemesanan
    <br>2.7 Riwayat Pemesanan
 
-4. Teknologi Yang Digunakan
+## 3. Teknologi Yang Digunakan
+
    <br>3.1 Bahasa Pemrograman
        <br>3.1.1 Frontend
            <br>HTML
@@ -44,9 +47,9 @@ Anggota Kelompok :
        <br>3.2.5 Vite (Frontend build tool)
        <br>3.2.6 Putty
    
-4. Cara Mengoperasikan Website
-    <br>4.1 Akses & Registrasi di awal karena akses utama dikunci dan pelanggan baru tidak bisa langsung memesan.
-        <br>4.1.1 Buat Akun: Pada halaman login, pelanggan mengklik tautan "Belum punya akun? Daftar di sini".
+## 4. Cara Mengoperasikan Website
+### 4.1 Akses & Registrasi di awal karena akses utama dikunci dan pelanggan baru tidak bisa langsung memesan.
+#### <br>4.1.1 Buat Akun: Pada halaman login, pelanggan mengklik tautan "Belum punya akun? Daftar di sini".
         <br>4.1.2 Isi Data: Jendela popup (modal) halaman DaftarAkun akan muncul. Pelanggan wajib mengisi:
             <br>Nama Lengkap (untuk label pesanan).
             <br>Alamat Email (sebagai ID pengguna).
@@ -63,4 +66,4 @@ Anggota Kelompok :
         <br>4.3.2 Masukkan Keranjang: Pelanggan memilih menu yang diinginkan beserta jumlahnya.
         <br>4.3.3 Checkout: Pelanggan mengkonfirmasi pesanan dan melakukan pembayaran (atau memilih metode bayar).
         <br>4.3.4 Pesanan Diterima: Sistem memproses pesanan, dan pelanggan menunggu kopi dibuat/dikirim.
->>>>>>
+
