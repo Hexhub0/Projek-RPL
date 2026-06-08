@@ -6,7 +6,6 @@
     <title>Produk - Beranda Coffee</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +13,6 @@
       rel="stylesheet"
     />
 
-    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
@@ -25,20 +23,16 @@
       </symbol>
     </svg>
 
-    <!-- My Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-    <!-- Alpine JS -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- App -->
     <script src="js/app.js" async></script>
   </head>
   <body>
-    <!-- Navbar -->
     <nav class="navbar" x-data>
       <a href="/home" class="navbar-logo">Beranda<span>Coffee</span>.</a>
 
@@ -59,7 +53,6 @@
             x-text="$store.cart.quantity"
           ></span
         ></a>
-        <!-- Profile Button -->
         <div class="profile-dropdown">
           <button class="profile-btn" id="profile-button">
             <i data-feather="user"></i>
@@ -75,15 +68,11 @@
         </div>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
-
-      <!-- Search Form start -->
       <div class="search-form">
         <input type="search" id="search-box" placeholder="Cari produk..." />
         <label for="search-box"><i data-feather="search"></i></label>
       </div>
-      <!-- Search Form end -->
 
-      <!-- Shopping Cart start -->
       <div class="shopping-cart">
         <template x-for="(item, index) in $store.cart.items" x-keys="index">
           <div class="cart-item">
@@ -157,11 +146,8 @@
           </a>
         </div>
       </div>
-      <!-- Shopping Cart end -->
     </nav>
-    <!-- Navbar end -->
 
-    <!-- Products Section start -->
     <section id="products" class="products products-page" x-data="products">
       <div class="products-header">
         <h2><span>Produk</span> Kami</h2>
@@ -180,7 +166,6 @@
             </div>
 
             <div class="product-actions-top">
-              <!-- FAVORITE -->
               <a
                 href="#"
                 @click.prevent="$store.favorites.toggle(item, 'product')"
@@ -202,7 +187,6 @@
                   <use href="img/feather-sprite.svg#heart" />
                 </svg>
               </a>
-              <!-- DETAIL -->
               <a
                 href="#"
                 class="product-action-btn item-detail-button"
@@ -231,7 +215,6 @@
             <div class="product-info">
               <h3 x-text="item.name"></h3>
               <p class="product-desc" x-text="item.desc"></p>
-              <!-- RATING DISPLAY -->
               <div class="product-rating">
                 <div class="product-stars-new">
                   <template x-for="i in 5" :key="i">
@@ -279,9 +262,7 @@
         </template>
       </div>
     </section>
-    <!-- Products Section end -->
 
-    <!-- Footer start -->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-col">
@@ -331,9 +312,7 @@
         <p>© 2025 BerandaCoffee. All Rights Reserved.</p>
       </div>
     </footer>
-    <!-- Footer end -->
 
-    <!-- Modal Box Item Detail start -->
     <div class="modal" id="item-detail-modal">
       <div class="modal-container">
         <a href="#" class="close-icon"><i data-feather="x"></i></a>
@@ -357,7 +336,6 @@
               <span>(0 rating)</span>
             </div>
 
-            <!-- Rating Section di Modal -->
             <div class="modal-rating-section">
               <span
                 style="
@@ -431,16 +409,13 @@
         </div>
       </div>
     </div>
-    <!-- Modal Box Item Detail end -->
 
     <script>
       feather.replace();
     </script>
     
-    <!-- My Javascript -->
     <script src="js/script.js"></script>
 
-    <!-- DeepSeek AI Chat Widget -->
     @include('components.chat-widget')
   </body>
 </html>

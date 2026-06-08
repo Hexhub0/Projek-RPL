@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\DeepSeekService;
+use App\Services\GeminiService; // <-- Panggil service yang baru
 use Illuminate\Http\Request;
 
 class DeepSeekChatController extends Controller
 {
-    public function chat(Request $request, DeepSeekService $deepSeek)
+    public function chat(Request $request, GeminiService $gemini) // <-- Nama parameter diubah
     {
         $request->validate([
             'message' => 'required|string|max:1000'
         ]);
 
         try {
-            $reply = $deepSeek->chat($request->message);
+            // Panggil method chat dari GeminiService kita
+            $reply = $gemini->chat($request->message);
             
             return response()->json([
                 'success' => true,

@@ -6,7 +6,6 @@
     <title>Menu - Beranda Coffee</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +13,6 @@
       rel="stylesheet"
     />
 
-    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
@@ -25,20 +23,16 @@
       </symbol>
     </svg>
 
-    <!-- My Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-    <!-- Alpine JS -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- App -->
     <script src="js/app.js" async></script>
   </head>
   <body>
-    <!-- Navbar -->
     <nav class="navbar" x-data>
       <a href="/home" class="navbar-logo">Beranda<span>Coffee</span>.</a>
 
@@ -59,7 +53,6 @@
             x-text="$store.cart.quantity"
           ></span
         ></a>
-        <!-- Profile Button -->
         <div class="profile-dropdown">
           <button class="profile-btn" id="profile-button">
             <i data-feather="user"></i>
@@ -75,15 +68,11 @@
         </div>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
-
-      <!-- Search Form start -->
       <div class="search-form">
         <input type="search" id="search-box" placeholder="Cari menu..." />
         <label for="search-box"><i data-feather="search"></i></label>
       </div>
-      <!-- Search Form end -->
 
-      <!-- Shopping Cart start -->
       <div class="shopping-cart">
         <template x-for="(item, index) in $store.cart.items" x-keys="index">
           <div class="cart-item">
@@ -157,11 +146,8 @@
           </a>
         </div>
       </div>
-      <!-- Shopping Cart end -->
     </nav>
-    <!-- Navbar end -->
 
-    <!-- Menu Section start -->
     <section id="menu" class="menu menu-page" x-data="products">
       <div class="menu-header">
         <h2><span>Menu</span> Kami</h2>
@@ -171,7 +157,6 @@
         </p>
       </div>
 
-      <!-- Kategori Menu -->
       <div class="category-filter">
         <button
           class="category-btn"
@@ -217,10 +202,8 @@
                 class="menu-card-img"
               />
 
-              <!-- Category Badge -->
               <div class="category-badge" x-text="item.categoryLabel"></div>
               <div class="menu-card-actions">
-                <!-- FAVORITE -->
                 <a
                   href="#"
                   @click.prevent="$store.favorites.toggle(item, 'menu')"
@@ -242,7 +225,6 @@
                     <use href="img/feather-sprite.svg#heart" />
                   </svg>
                 </a>
-                <!-- DETAIL -->
                 <a
                   href="#"
                   class="menu-action-btn item-detail-button"
@@ -269,7 +251,6 @@
             <div class="menu-card-content">
               <h3 class="menu-card-title" x-text="item.name"></h3>
               <p class="menu-card-desc" x-text="item.desc"></p>
-              <!-- RATING DISPLAY -->
               <div class="menu-rating-section">
                 <div class="rating-stars">
                   <template x-for="i in 5" :key="i">
@@ -297,7 +278,6 @@
                   class="menu-item-price"
                   x-text="$store.cart.rupiah(item.price)"
                 ></p>
-                <!-- CART BUTTON -->
                 <button
                   class="add-to-cart-btn"
                   @click="$store.cart.add(item)"
@@ -320,9 +300,7 @@
         </template>
       </div>
     </section>
-    <!-- Menu end -->
 
-    <!-- Footer start -->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-col">
@@ -372,9 +350,7 @@
         <p>© 2025 BerandaCoffee. All Rights Reserved.</p>
       </div>
     </footer>
-    <!-- Footer end -->
 
-    <!-- Modal Box Item Detail start -->
     <div class="modal" id="item-detail-modal">
       <div class="modal-container">
         <a href="#" class="close-icon"><i data-feather="x"></i></a>
@@ -472,17 +448,14 @@
         </div>
       </div>
     </div>
-    <!-- Modal Box Item Detail end -->
 
     <script>
       feather.replace();
-      // Tangani parameter URL untuk filter otomatis
       document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
         const category = urlParams.get("category");
 
         if (category) {
-          // Tunggu Alpine.js siap
           setTimeout(() => {
             if (typeof Alpine !== "undefined") {
               const productsElement = document.querySelector(
@@ -497,7 +470,6 @@
                 ) {
                   productsData.selectedCategory = category;
 
-                  // Scroll ke menu section
                   setTimeout(() => {
                     const menuSection = document.getElementById("menu");
                     if (menuSection) {
@@ -515,9 +487,8 @@
       });
     </script>
 
-    <!-- My Javascript -->
     <script src="js/script.js"></script>
-    <!-- DeepSeek AI Chat Widget -->
+
     @include('components.chat-widget')
   </body>
 </html>
