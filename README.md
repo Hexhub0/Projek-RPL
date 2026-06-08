@@ -16,13 +16,13 @@ BerandaCoffee merupakan pengembangan platform layanan coffee shop berbentuk webs
 
 ## 2. Fitur Utama
 
-   2.1 Login dan Registrasi
-   2.2 Favorit Menu
-   2.3 Ulasan Menu
-   2.4 Sorting Menu
-   2.5 Pembayaran Produk 
-   2.6 Status Pemesanan
-   2.7 Riwayat Pemesanan
+   <br> 2.1 Login dan Registrasi
+   <br> 2.2 Favorit Menu
+   <br> 2.3 Ulasan Menu
+   <br> 2.4 Sorting Menu
+   <br> 2.5 Pembayaran Produk 
+   <br> 2.6 Status Pemesanan
+   <br> 2.7 Riwayat Pemesanan
 
 ## 3. Teknologi Yang Digunakan
 ### 3.1 Bahasa Pemrograman
@@ -49,7 +49,7 @@ BerandaCoffee merupakan pengembangan platform layanan coffee shop berbentuk webs
 ## 4. Cara Mengoperasikan Website
 
 ### 4.1 Akses & Registrasi di awal karena akses utama dikunci dan pelanggan baru tidak bisa langsung memesan.
-#### <br>4.1.1 Buat Akun: Pada halaman login, pelanggan mengklik tautan "Belum punya akun? Daftar di sini".
+#### 4.1.1 Buat Akun: Pada halaman login, pelanggan mengklik tautan "Belum punya akun? Daftar di sini".
         <br>4.1.2 Isi Data: Jendela popup (modal) halaman DaftarAkun akan muncul. Pelanggan wajib mengisi:
             <br>Nama Lengkap (untuk label pesanan).
             <br>Alamat Email (sebagai ID pengguna).
