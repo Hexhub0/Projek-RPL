@@ -14,10 +14,9 @@ class GeminiChatController extends Controller
         ]);
 
         $userMessage = $request->input('message');
-        $apiKey = env('GEMINI_API_KEY'); // Pastikan sudah setting GEMINI_API_KEY di file .env
+        $apiKey = env('GEMINI_API_KEY');
 
         try {
-            // Memanggil API Resmi Google Gemini (Menggunakan Model gemini-1.5-flash)
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
             ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={$apiKey}", [
@@ -32,7 +31,6 @@ class GeminiChatController extends Controller
 
             if ($response->successful()) {
                 $data = $response->json();
-                // Mengambil teks balasan dari struktur JSON Gemini
                 $botReply = $data['candidates'][0]['content']['parts'][0]['text'] ?? 'Maaf, saya tidak dapat memahami pesan tersebut.';
 
                 return response()->json([

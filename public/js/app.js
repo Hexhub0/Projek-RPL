@@ -1,10 +1,7 @@
-// Alpine.js Data and Stores
-
 document.addEventListener("alpine:init", () => {
   Alpine.data("products", () => ({
     selectedCategory: "all",
 
-    // Menu Items
     items: [
       {
         id: 1,

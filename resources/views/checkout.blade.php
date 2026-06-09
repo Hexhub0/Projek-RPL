@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout - Beranda Coffee</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,19 +12,15 @@
       rel="stylesheet"
     />
 
-    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- My Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-    <!-- Alpine JS -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- App -->
     <script src="js/app.js" async></script>
 
     <style>
@@ -218,7 +213,6 @@
         color: #2c1810;
       }
 
-      /* Virtual Account Display */
       .va-display {
         margin-top: 1.5rem;
         padding: 1.5rem;
@@ -429,7 +423,6 @@
         box-shadow: 0 6px 20px rgba(182, 137, 91, 0.4);
       }
 
-      /* Receipt Modal */
       .receipt-modal {
         display: none;
         position: fixed;
@@ -862,7 +855,6 @@
     </style>
   </head>
   <body>
-    <!-- Navbar -->
     <nav class="navbar" x-data>
       <a href="/home" class="navbar-logo">Beranda<span>Coffee</span>.</a>
 
@@ -882,7 +874,6 @@
             x-text="$store.cart.quantity"
           ></span>
         </a>
-        <!-- Profile Button -->
         <div class="profile-dropdown">
           <button class="profile-btn" id="profile-button">
             <i data-feather="user"></i>
@@ -900,10 +891,8 @@
       </div>
     </nav>
 
-    <!-- Checkout Page -->
     <section class="checkout-page" x-data="checkoutData()">
       <div class="checkout-container">
-        <!-- Form Section -->
         <div class="checkout-section">
           <h2 class="section-title">
             <i data-feather="user"></i>
@@ -1004,7 +993,6 @@
               </div>
             </div>
 
-            <!-- Bank Selection for Virtual Account -->
             <div
               x-show="paymentMethod === 'Virtual Account'"
               class="bank-selection"
@@ -1066,7 +1054,6 @@
                 </div>
               </div>
 
-              <!-- Virtual Account Display -->
               <div x-show="selectedBank" class="va-display" x-transition>
                 <h4>Virtual Account Number</h4>
                 <div class="va-number" x-text="virtualAccountNumber"></div>
@@ -1101,7 +1088,6 @@
             </button>
           </form>
         </div>
-        <!-- Order Summary Section -->
         <div class="checkout-section">
           <h2 class="section-title">
             <i data-feather="shopping-bag"></i>
@@ -1188,7 +1174,6 @@
         </div>
       </div>
     </section>
-    <!-- Receipt Modal -->
     <div class="receipt-modal" id="receiptModal">
       <div class="receipt-container" id="receiptContent">
         <div class="receipt-header">
@@ -1197,7 +1182,6 @@
         </div>
 
         <div class="receipt-body">
-          <!-- Order Info -->
           <div class="receipt-section">
             <h3>
               <i data-feather="info"></i>
@@ -1217,7 +1201,6 @@
             </div>
           </div>
 
-          <!-- Customer Info -->
           <div class="receipt-section">
             <h3>
               <i data-feather="user"></i>
@@ -1244,7 +1227,6 @@
             </div>
           </div>
 
-          <!-- Order Items -->
           <div class="receipt-section">
             <h3>
               <i data-feather="shopping-bag"></i>
@@ -1287,7 +1269,6 @@
             </div>
           </div>
 
-          <!-- Payment Info -->
           <div class="receipt-section">
             <h3>
               <i data-feather="credit-card"></i>
@@ -1328,7 +1309,6 @@
             <div id="receipt-payment-instruction"></div>
           </div>
 
-          <!-- QR Code for QRIS -->
           <div
             id="receipt-qr-section"
             class="receipt-section"
@@ -1371,7 +1351,6 @@
         </div>
       </div>
     </div>
-    <!-- Success Notification -->
     <div class="notification-overlay" id="notificationOverlay"></div>
     <div class="success-notification" id="successNotification">
       <div class="success-icon">
@@ -1384,7 +1363,6 @@
       </button>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-col">
@@ -1477,10 +1455,8 @@
             const tax = subtotal * 0.1;
             const total = subtotal + tax;
 
-            // Generate order number
             const orderNumber = "BC" + Date.now().toString().slice(-8);
 
-            // Generate current date and time
             const now = new Date();
             const dateStr = now.toLocaleDateString("id-ID", {
               day: "2-digit",
@@ -1493,12 +1469,10 @@
               second: "2-digit",
             });
 
-            // Generate VA if Virtual Account
             if (this.paymentMethod === "Virtual Account") {
               this.generateVirtualAccount();
             }
 
-            // Fill receipt data
             document.getElementById("receipt-order-number").textContent =
               orderNumber;
             document.getElementById("receipt-date").textContent = dateStr;
@@ -1508,7 +1482,6 @@
             document.getElementById("receipt-table-number").textContent =
               this.tableNumber;
 
-            // Notes
             if (this.orderNotes) {
               document.getElementById("receipt-notes").textContent =
                 this.orderNotes;
@@ -1519,7 +1492,6 @@
                 "none";
             }
 
-            // Items list
             const itemsList = document.getElementById("receipt-items-list");
             itemsList.innerHTML = "";
             items.forEach((item) => {
@@ -1535,7 +1507,6 @@
               itemsList.appendChild(itemDiv);
             });
 
-            // Totals
             document.getElementById("receipt-subtotal").textContent =
               this.$store.cart.rupiah(subtotal);
             document.getElementById("receipt-tax").textContent =
@@ -1543,7 +1514,6 @@
             document.getElementById("receipt-total").textContent =
               this.$store.cart.rupiah(total);
 
-            // Payment method
             let paymentText = this.paymentMethod;
             if (this.selectedBank) {
               paymentText += " - " + this.selectedBank;
@@ -1551,7 +1521,6 @@
             document.getElementById("receipt-payment-method").textContent =
               paymentText;
 
-            // Payment instructions
             const instructionEl = document.getElementById(
               "receipt-payment-instruction"
             );
@@ -1560,12 +1529,10 @@
             const qrSection = document.getElementById("receipt-qr-section");
             const statusBadge = document.getElementById("receipt-status-badge");
 
-            // Reset displays
             bankInfoEl.style.display = "none";
             vaInfoEl.style.display = "none";
             qrSection.style.display = "none";
 
-            // Set status badge and instructions based on payment method
             if (this.paymentMethod === "Tunai") {
               statusBadge.className = "status-badge status-pending";
               statusBadge.textContent = "Pending";
@@ -1643,17 +1610,14 @@
               `;
             }
 
-            // Show modal
             document.getElementById("receiptModal").classList.add("active");
 
-            // Refresh feather icons
             setTimeout(() => {
               if (typeof feather !== "undefined") {
                 feather.replace();
               }
             }, 100);
 
-            // Clear cart after 2 seconds
             setTimeout(() => {
               this.$store.cart.clear();
             }, 2000);
@@ -1662,10 +1626,8 @@
       }
 
       function printReceipt() {
-        // Save to order history before printing
         saveOrderHistory();
 
-        // Show success notification
         showSuccessNotification();
       }
 
@@ -1676,7 +1638,6 @@
         overlay.classList.add("show");
         notification.classList.add("show");
 
-        // Refresh feather icons for the check icon
         if (typeof feather !== "undefined") {
           feather.replace();
         }
@@ -1689,21 +1650,17 @@
         overlay.classList.remove("show");
         notification.classList.remove("show");
 
-        // Redirect to order history
         window.location.href = "/order";
       }
 
       function saveOrderHistory() {
-        // Get existing order history from localStorage
         let orderHistory =
           JSON.parse(localStorage.getItem("berandaCoffeeOrderHistory")) || [];
 
-        // Get current order data from receipt
         const paymentMethod = document.getElementById(
           "receipt-payment-method"
         ).textContent;
 
-        // Determine status based on payment method
         let orderStatus = "Pending";
         if (
           paymentMethod.includes("Virtual Account") ||
@@ -1731,7 +1688,6 @@
           timestamp: new Date().toISOString(),
         };
 
-        // Get items from receipt
         const itemsList = document.querySelectorAll(
           "#receipt-items-list .receipt-item"
         );
@@ -1742,27 +1698,22 @@
           orderData.items.push({ name, qty, price });
         });
 
-        // Add bank info if exists
         const bankInfo = document.getElementById("receipt-bank");
         if (bankInfo && bankInfo.textContent) {
           orderData.bank = bankInfo.textContent;
         }
 
-        // Add VA info if exists
         const vaNumber = document.getElementById("receipt-va-number");
         if (vaNumber && vaNumber.textContent) {
           orderData.virtualAccount = vaNumber.textContent;
         }
 
-        // Add to history (newest first)
         orderHistory.unshift(orderData);
 
-        // Keep only last 50 orders
         if (orderHistory.length > 50) {
           orderHistory = orderHistory.slice(0, 50);
         }
 
-        // Save to localStorage
         localStorage.setItem(
           "berandaCoffeeOrderHistory",
           JSON.stringify(orderHistory)
@@ -1779,7 +1730,6 @@
         }, 300);
       }
 
-      // Close modal when clicking outside
       document
         .getElementById("receiptModal")
         ?.addEventListener("click", function (e) {
@@ -1788,7 +1738,6 @@
           }
         });
 
-      // Initialize feather icons
       document.addEventListener("DOMContentLoaded", function () {
         if (typeof feather !== "undefined") {
           feather.replace();

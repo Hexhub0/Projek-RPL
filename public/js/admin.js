@@ -12,13 +12,10 @@ const API_CONFIG = {
     }
 };
 
-// CSRF Token untuk Laravel
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-// State management
 let currentRejectId = null;
 
-// Fungsi untuk memuat data pembelian dari database
 async function loadPurchases() {
     try {
         const response = await fetch(API_CONFIG.endpoints.pendingPurchases, {
@@ -45,7 +42,6 @@ async function loadPurchases() {
     }
 }
 
-// Fungsi untuk merender data pembelian
 function renderPurchases(purchases) {
     const dashboardContent = document.getElementById('dashboardContent');
     
@@ -71,7 +67,6 @@ function renderPurchases(purchases) {
     `;
 
     purchases.forEach(purchase => {
-        // Format items list
         const itemsList = purchase.items.map(item => 
             `${item.name} (${item.quantity}x)`
         ).join(', ');
@@ -120,7 +115,6 @@ function renderPurchases(purchases) {
     dashboardContent.innerHTML = tableHTML;
 }
 
-// Fungsi untuk render empty state
 function renderEmptyState() {
     const dashboardContent = document.getElementById('dashboardContent');
     dashboardContent.innerHTML = `
@@ -137,7 +131,6 @@ function renderEmptyState() {
     `;
 }
 
-// Fungsi untuk approve pembelian
 async function approvePurchase(id) {
     if (!confirm('Apakah Anda yakin ingin menyetujui pembelian ini?')) {
         return;
@@ -158,7 +151,6 @@ async function approvePurchase(id) {
         const result = await response.json();
         
         if (result.success) {
-            // Remove row from table
             const row = document.querySelector(`tr[data-id="${id}"]`);
             if (row) {
                 row.classList.add('fading');
@@ -178,20 +170,17 @@ async function approvePurchase(id) {
     }
 }
 
-// Fungsi untuk membuka modal penolakan
 function openRejectModal(id) {
     currentRejectId = id;
     document.getElementById('rejectModal').style.display = 'flex';
 }
 
-// Fungsi untuk menutup modal penolakan
 function closeRejectModal() {
     currentRejectId = null;
     document.getElementById('rejectReason').value = '';
     document.getElementById('rejectModal').style.display = 'none';
 }
 
-// Fungsi untuk submit penolakan
 async function submitRejection() {
     if (!currentRejectId) return;
     
@@ -213,7 +202,6 @@ async function submitRejection() {
         const result = await response.json();
         
         if (result.success) {
-            // Remove row from table
             const row = document.querySelector(`tr[data-id="${currentRejectId}"]`);
             if (row) {
                 row.classList.add('fading');
@@ -234,7 +222,6 @@ async function submitRejection() {
     }
 }
 
-// Fungsi untuk cek apakah tabel kosong
 function checkEmptyState() {
     const tableRows = document.querySelectorAll('.pending-table tbody tr');
     
@@ -243,12 +230,10 @@ function checkEmptyState() {
     }
 }
 
-// Fungsi untuk format mata uang
 function formatCurrency(amount) {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
-// Fungsi untuk update waktu
 function updateDateTime() {
     const now = new Date();
     const options = { 
@@ -264,7 +249,6 @@ function updateDateTime() {
     document.getElementById('currentDateTime').textContent = formattedDateTime;
 }
 
-// Fungsi untuk logout
 async function logout() {
    function logout() {
     if (confirm('Apakah Anda yakin ingin logout?')) {
@@ -285,7 +269,6 @@ async function logout() {
     }
 }
 
-// Fungsi untuk menampilkan alert
 function showAlert(type, message) {
     const container = document.getElementById('alertContainer');
     const alert = document.createElement('div');
@@ -305,9 +288,7 @@ function showAlert(type, message) {
     }, 3000);
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const sidebar = document.querySelector('.sidebar');
     
@@ -317,17 +298,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Update waktu
     updateDateTime();
     setInterval(updateDateTime, 1000);
     
-    // Load data
     loadPurchases();
     
-    // Auto refresh setiap 30 detik
     setInterval(loadPurchases, 30000);
     
-    // Close modal when clicking outside
     window.addEventListener('click', function(event) {
         const modal = document.getElementById('rejectModal');
         if (event.target === modal) {

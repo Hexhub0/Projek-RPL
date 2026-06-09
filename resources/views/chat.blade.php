@@ -142,8 +142,6 @@
                 }
             } catch (error) {
                 loadingDiv.remove();
-                
-                // 1. TAMBAHKAN DUA BARIS INI UNTUK DEBUGGING
                 console.error("Detail Error Lengkap:", error);
                 alert("Terjadi error! Periksa Console (F12) untuk detailnya.");
                 

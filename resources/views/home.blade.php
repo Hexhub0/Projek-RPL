@@ -6,7 +6,6 @@
     <title>Beranda Coffee</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,23 +13,18 @@
       rel="stylesheet"
     />
 
-    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- My Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-    <!-- Alpine JS -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- App -->
     <script src="{{ asset('js/app.js') }}" async></script>
   </head>
   <body>
-    <!-- Navbar -->
     <nav class="navbar" x-data>
       <a href="/home" class="navbar-logo">Beranda<span>Coffee</span>.</a>
 
@@ -43,14 +37,12 @@
       </div>
 
       <div class="navbar-extra">
-        <!-- Profile Button -->
         <div class="profile-dropdown">
           <button class="profile-btn" id="profile-button">
             <i data-feather="user"></i>
           </button>
           <div class="profile-dropdown-content" id="profile-dropdown">
             <div class="profile-actions">
-              <!-- Hanya logout yang tersisa -->
               <a href="/" class="profile-action-item logout" id="logout-btn">
                 <i data-feather="log-out"></i>
                 <span>Log Out</span>
@@ -61,9 +53,7 @@
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
     </nav>
-    <!-- Navbar end -->
 
-    <!-- Hero Section start -->
     <section class="hero" id="home">
       <main class="content">
         <h1>Mari Nikmati<span> Secangkir Kopi</span></h1>
@@ -77,9 +67,7 @@
         </a>
       </main>
     </section>
-    <!-- Hero Section end -->
 
-    <!-- About Section start -->
     <section id="about" class="about">
       <h2><span>Tentang</span> Kami</h2>
 
@@ -103,9 +91,7 @@
         </div>
       </div>
     </section>
-    <!-- About Section end -->
 
-    <!-- Promo Banner Section start -->
     <section class="promo-banner">
       <div class="promo-container">
         <div class="promo-badge">
@@ -120,9 +106,7 @@
         </a>
       </div>
     </section>
-    <!-- Promo Banner Section end -->
 
-    <!-- Featured Menu Section start -->
     <section class="featured-menu">
       <div class="section-header">
         <h2>Menu <span>Terpopuler</span> Kami</h2>
@@ -130,7 +114,6 @@
       </div>
 
       <div class="featured-grid">
-        <!-- Featured Item 1 -->
         <div class="featured-card">
           <div class="featured-image">
             <img src="{{ asset('img/menu/1.jpg') }}" alt="Espresso" />
@@ -159,7 +142,6 @@
             </div>
           </div>
         </div>
-        <!-- Featured Item 2 -->
         <div class="featured-card">
           <div class="featured-image">
             <img src="{{ asset('img/menu/2.jpg') }}" alt="Latte" />
@@ -188,7 +170,6 @@
             </div>
           </div>
         </div>
-        <!-- Featured Item 3 -->
         <div class="featured-card">
           <div class="featured-image">
             <img src="{{ asset('img/menu/3.jpg') }}" alt="Matcha" />
@@ -226,9 +207,7 @@
         </a>
       </div>
     </section>
-    <!-- Featured Menu Section end -->
 
-    <!-- Categories Showcase start -->
     <section class="categories-showcase">
       <div class="section-header">
         <span class="section-tag">Kategori Menu</span>
@@ -246,7 +225,6 @@
           <span class="category-desc"
             >Dari espresso hingga specialty coffee</span
           >
-          <!-- Link dengan parameter category=coffee -->
           <a href="/menu?category=coffee" class="category-card">
             <h3>Kopi</h3>
           </a>
@@ -258,7 +236,6 @@
           <h3>Snack</h3>
           <p>10+ Pilihan Snack</p>
           <span class="category-desc">Camilan lezat teman ngopi</span>
-          <!-- Link dengan parameter category=snack -->
           <a href="/menu?category=snack" class="category-card">
             <h3>Snack</h3>
           </a>
@@ -270,16 +247,12 @@
           <h3>Dessert</h3>
           <p>8+ Dessert Premium</p>
           <span class="category-desc">Penutup manis yang sempurna</span>
-          <!-- Link dengan parameter category=dessert -->
           <a href="/menu?category=dessert" class="category-card">
             <h3>Dessert</h3>
           </a>
         </div>
       </div>
     </section>
-    <!-- Categories Showcase end -->
-
-    <!-- Special Offer Section start -->
     <section class="special-offer">
       <div class="offer-content">
         <div class="offer-left">
@@ -320,9 +293,7 @@
         </div>
       </div>
     </section>
-    <!-- Special Offer Section end -->
 
-    <!-- Contact Section start -->
     <section id="contact" class="contact">
       <h2><span>Kontak</span> Kami</h2>
       <p>
@@ -386,9 +357,7 @@
         </div>
       </div>
     </section>
-    <!-- Contact Section end -->
 
-    <!-- Footer start -->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-col">
@@ -438,14 +407,11 @@
         <p>© 2025 BerandaCoffee. All Rights Reserved.</p>
       </div>
     </footer>
-    <!-- Footer end -->
 
     <script>
       feather.replace();
 
-      // Script sederhana untuk filter otomatis
       document.addEventListener("DOMContentLoaded", function () {
-        // Fungsi baca parameter URL
         function getParameterByName(name) {
           const url = window.location.href;
           name = name.replace(/[\[\]]/g, "\\$&");
@@ -456,13 +422,11 @@
           return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
-        // Ambil parameter category
         const category = getParameterByName("category");
 
         if (category && ["coffee", "snack", "dessert"].includes(category)) {
           console.log("Auto-filter category:", category);
 
-          // Klik button kategori yang sesuai
           setTimeout(() => {
             const categoryBtn = document.querySelector(
               `.category-btn[onclick*="selectedCategory = '${category}'"]`
@@ -472,7 +436,6 @@
               console.log("Category button clicked:", category);
             }
 
-            // Scroll ke section menu
             const menuSection = document.getElementById("menu");
             if (menuSection) {
               setTimeout(() => {
@@ -484,9 +447,8 @@
       });
     </script>
 
-    <!-- My Javascript -->
     <script src="js/script.js"></script>
-    <!-- DeepSeek AI Chat Widget -->
+    
     @include('components.chat-widget')
   </body>
 </html>

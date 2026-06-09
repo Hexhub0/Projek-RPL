@@ -1,8 +1,6 @@
-// Navbar Toggle
 const navbarNav = document.querySelector(".navbar-nav");
 const hamburgerMenu = document.querySelector("#hamburger-menu");
 
-// Toggle hamburger menu
 if (hamburgerMenu) {
   hamburgerMenu.onclick = (e) => {
     navbarNav.classList.toggle("active");
@@ -10,7 +8,6 @@ if (hamburgerMenu) {
   };
 }
 
-// Search Form Toggle
 const searchForm = document.querySelector(".search-form");
 const searchBox = document.querySelector("#search-box");
 const searchButton = document.querySelector("#search-button");
@@ -23,7 +20,6 @@ if (searchButton) {
   };
 }
 
-// Shopping Cart Toggle
 const shoppingCart = document.querySelector(".shopping-cart");
 const shoppingCartButton = document.querySelector("#shopping-cart-button");
 
@@ -34,7 +30,6 @@ if (shoppingCartButton) {
   };
 }
 
-// Close menu/search/cart when clicking outside
 document.addEventListener("click", function (e) {
   const isClickInsideNav = navbarNav.contains(e.target);
   const isClickHamburger = hamburgerMenu && hamburgerMenu.contains(e.target);
@@ -48,16 +43,11 @@ document.addEventListener("click", function (e) {
     navbarNav.classList.remove("active");
   }
 
-  // if (!isClickSearchForm && !isClickSearchButton && searchForm) {
-  //   searchForm.classList.remove("active");
-  // }
-
   if (!isClickCart && !isClickCartButton && shoppingCart) {
     shoppingCart.classList.remove("active");
   }
 });
 
-// Modal Box Item Detail
 const itemDetailModal = document.querySelector("#item-detail-modal");
 document.addEventListener("click", function (e) {
   const btn = e.target.closest(".item-detail-button");
@@ -65,7 +55,6 @@ document.addEventListener("click", function (e) {
   if (btn) {
     e.preventDefault();
 
-    // Get data from button attributes
     const itemId = btn.dataset.id;
     const itemType = btn.dataset.type;
     const itemName = btn.dataset.name;
@@ -73,9 +62,8 @@ document.addEventListener("click", function (e) {
     const itemImg = btn.dataset.img;
     const itemPrice = btn.dataset.price;
 
-    console.log("Opening modal for:", itemName, "Image:", itemImg); // Debug
+    console.log("Opening modal for:", itemName, "Image:", itemImg);
 
-    // Update modal content
     if (itemDetailModal) {
       const modalImg = itemDetailModal.querySelector("img");
       const modalTitle = itemDetailModal.querySelector(".product-content h3");
@@ -90,17 +78,12 @@ document.addEventListener("click", function (e) {
       if (modalDesc) modalDesc.textContent = itemDesc;
       if (modalPrice) modalPrice.textContent = itemPrice;
 
-      // Update stars based on rating
       updateModalRating(itemId, itemType);
-
-      // Store current item data in modal
       itemDetailModal.dataset.itemId = itemId;
       itemDetailModal.dataset.itemType = itemType;
 
-      // Show modal
       itemDetailModal.style.display = "flex";
 
-      // Replace feather icons
       if (typeof feather !== "undefined") {
         feather.replace();
       }
@@ -108,7 +91,6 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// Close modal
 const closeIcon = document.querySelector(".modal .close-icon");
 if (closeIcon) {
   closeIcon.onclick = (e) => {
@@ -119,7 +101,6 @@ if (closeIcon) {
   };
 }
 
-// Close modal when clicking outside
 if (itemDetailModal) {
   window.onclick = (e) => {
     if (e.target === itemDetailModal) {
@@ -128,7 +109,6 @@ if (itemDetailModal) {
   };
 }
 
-// Update modal rating display
 function updateModalRating(itemId, itemType) {
   if (typeof Alpine === "undefined" || !Alpine.store("ratings")) return;
 
@@ -136,7 +116,6 @@ function updateModalRating(itemId, itemType) {
   const avgRating = ratingsStore.getAverageRating(itemId, itemType);
   const ratingCount = ratingsStore.getRatingCount(itemId, itemType);
 
-  // Update star display
   const stars = itemDetailModal.querySelectorAll(".product-stars i");
   stars.forEach((star, index) => {
     if (index < Math.round(avgRating)) {
@@ -146,19 +125,16 @@ function updateModalRating(itemId, itemType) {
     }
   });
 
-  // Update rating count
   const ratingInfo = itemDetailModal.querySelector(".rating-info span");
   if (ratingInfo) {
     ratingInfo.textContent = `(${ratingCount} rating)`;
   }
 
-  // Re-initialize feather icons
   if (typeof feather !== "undefined") {
     feather.replace();
   }
 }
 
-// Modal Rating Stars Click Handler
 document.addEventListener("DOMContentLoaded", function () {
   const modalRateStars = document.querySelectorAll(".modal-rate-star");
 
@@ -171,10 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const itemType = itemDetailModal.dataset.itemType;
 
       if (itemId && itemType) {
-        // Add rating
         Alpine.store("ratings").addRating(itemId, itemType, rating);
 
-        // Visual feedback
         modalRateStars.forEach((s, index) => {
           if (index < rating) {
             s.setAttribute("fill", "currentColor");
@@ -183,15 +157,12 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
 
-        // Update modal rating display
         updateModalRating(itemId, itemType);
 
-        // Show success message
         alert(`Terima kasih! Anda memberikan rating ${rating} bintang.`);
       }
     });
 
-    // Hover effect
     star.addEventListener("mouseenter", function () {
       const rating = parseInt(this.dataset.rating);
       modalRateStars.forEach((s, index) => {
@@ -204,7 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Reset stars on mouse leave
   const rateStarsContainer = document.querySelector(
     ".modal-rating-section .rate-stars"
   );
@@ -215,7 +185,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const itemId = itemDetailModal.dataset.itemId;
       const itemType = itemDetailModal.dataset.itemType;
 
-      // Reset rating stars visual
       const rateStars = itemDetailModal.querySelectorAll(".modal-rate-star");
       rateStars.forEach((star) => {
         star.setAttribute("fill", "none");
@@ -238,7 +207,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Search functionality (optional enhancement)
 if (searchBox) {
   searchBox.addEventListener("input", function (e) {
     const searchTerm = e.target.value.toLowerCase();
@@ -246,7 +214,6 @@ if (searchBox) {
   });
 }
 
-// Add smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     const href = this.getAttribute("href");
@@ -259,19 +226,16 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Replace feather icons on page load
 if (typeof feather !== "undefined") {
   feather.replace();
 }
 
-// Refresh feather icons periodically for dynamically added content
 setInterval(() => {
   if (typeof feather !== "undefined") {
     feather.replace();
   }
 }, 1000);
 
-// Profile Dropdown Toggle
 const profileBtn = document.getElementById("profile-button");
 const profileDropdown = document.getElementById("profile-dropdown");
 
@@ -281,7 +245,6 @@ if (profileBtn && profileDropdown) {
     profileDropdown.classList.toggle("active");
   });
 
-  // Close dropdown when clicking outside
   document.addEventListener("click", function (e) {
     if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
       profileDropdown.classList.remove("active");
@@ -289,7 +252,6 @@ if (profileBtn && profileDropdown) {
   });
 }
 
-// Fungsi untuk membaca parameter URL
 function getUrlParameter(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
@@ -299,7 +261,6 @@ function getUrlParameter(name) {
     : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-// User Manager
 const UserManager = {
   currentUser: {
     username: "Guest User",
@@ -345,11 +306,9 @@ const UserManager = {
   },
 };
 
-// Inisialisasi saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function () {
   UserManager.init();
 
-  // Logout button handler
   const logoutBtn = document.getElementById("logout-btn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", function (e) {
@@ -359,7 +318,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Close modal handler alternative
 document.addEventListener("click", function (e) {
   if (
     e.target.classList.contains("close-icon") ||
@@ -372,39 +330,31 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// Enhanced Search Functionality
-// Tambahkan kode ini ke dalam script.js Anda
-
-// Search functionality with navigation
 if (searchBox) {
   let searchTimeout;
 
   searchBox.addEventListener("input", function (e) {
     const searchTerm = e.target.value.toLowerCase().trim();
 
-    // Clear previous timeout
     clearTimeout(searchTimeout);
 
-    // Debounce search (tunggu 500ms setelah user berhenti mengetik)
     searchTimeout = setTimeout(() => {
       if (searchTerm.length > 0) {
-        performSearch(searchTerm, false); // false = jangan tutup search form
+        performSearch(searchTerm, false);
       }
     }, 500);
   });
 
-  // Search on Enter key
   searchBox.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
       e.preventDefault();
       const searchTerm = e.target.value.toLowerCase().trim();
       if (searchTerm.length > 0) {
-        performSearch(searchTerm, false); // false = jangan tutup search form
+        performSearch(searchTerm, false);
       }
     }
   });
 
-  // Prevent search form from closing when typing
   searchBox.addEventListener("focus", function () {
     if (searchForm) {
       searchForm.classList.add("active");
@@ -412,21 +362,17 @@ if (searchBox) {
   });
 }
 
-// Function to perform search
 function performSearch(searchTerm, closeSearch = false) {
   console.log("Searching for:", searchTerm);
 
-  // Get all items from Alpine.js store
   if (typeof Alpine === "undefined") {
     console.error("Alpine.js not loaded");
     return;
   }
 
-  // Wait for Alpine to be ready
   setTimeout(() => {
     const productsData = Alpine.store("cart");
 
-    // Search in menu items
     const menuItems = [
       { id: 1, name: "Espresso", category: "coffee", page: "menu" },
       { id: 2, name: "Latte Coffee", category: "coffee", page: "menu" },
@@ -454,12 +400,10 @@ function performSearch(searchTerm, closeSearch = false) {
       { id: 104, name: "Kopi Luwak", page: "products" },
     ];
 
-    // Search in menu items
     const menuResults = menuItems.filter((item) =>
       item.name.toLowerCase().includes(searchTerm)
     );
 
-    // Search in product items
     const productResults = productItems.filter((item) =>
       item.name.toLowerCase().includes(searchTerm)
     );
@@ -467,74 +411,57 @@ function performSearch(searchTerm, closeSearch = false) {
     console.log("Menu results:", menuResults);
     console.log("Product results:", productResults);
 
-    // Navigate to the appropriate page
     if (menuResults.length > 0) {
-      // Found in menu - navigate to menu.html
       const firstResult = menuResults[0];
       showSearchNotification("Ditemukan: " + firstResult.name, "success");
       setTimeout(() => {
         navigateToResult("menu", firstResult.category, firstResult.id);
       }, 500);
     } else if (productResults.length > 0) {
-      // Found in products - navigate to products.html
       const firstResult = productResults[0];
       showSearchNotification("Ditemukan: " + firstResult.name, "success");
       setTimeout(() => {
         navigateToResult("products", null, firstResult.id);
       }, 500);
     } else {
-      // No results found
       showSearchNotification(
         "Tidak ditemukan hasil untuk '" + searchTerm + "'",
         "error"
       );
     }
-
-    // Jangan tutup search form otomatis
-    // Biarkan user menutup manual dengan click di luar atau tombol close
   }, 100);
 }
 
-// Function to navigate to search result
 function navigateToResult(page, category, itemId) {
   const currentPage = window.location.pathname.split("/").pop();
 
   if (page === "menu") {
     if (currentPage === "menu.html") {
-      // Already on menu page - just filter and scroll
       filterAndScrollToItem(category, itemId);
     } else {
-      // Navigate to menu page with category filter
       window.location.href = `menu.html?category=${category}`;
     }
   } else if (page === "products") {
     if (currentPage === "products.html") {
-      // Already on products page - just scroll to item
       scrollToProductItem(itemId);
     } else {
-      // Navigate to products page
       window.location.href = "products.html";
     }
   }
 }
 
-// Function to filter and scroll to menu item
 function filterAndScrollToItem(category, itemId) {
   if (typeof Alpine === "undefined") return;
 
-  // Wait for Alpine to be ready
   setTimeout(() => {
     const productsElement = document.querySelector('[x-data="products"]');
     if (productsElement) {
       const productsData = Alpine.$data(productsElement);
 
       if (productsData) {
-        // Set category filter
         productsData.selectedCategory = category;
 
-        // Wait for Alpine to re-render
         setTimeout(() => {
-          // Scroll to the item
           const menuSection = document.getElementById("menu");
           if (menuSection) {
             menuSection.scrollIntoView({
@@ -543,7 +470,6 @@ function filterAndScrollToItem(category, itemId) {
             });
           }
 
-          // Highlight the found item
           highlightSearchResult(itemId);
         }, 300);
       }
@@ -551,7 +477,6 @@ function filterAndScrollToItem(category, itemId) {
   }, 200);
 }
 
-// Function to scroll to product item
 function scrollToProductItem(itemId) {
   setTimeout(() => {
     const productsSection = document.getElementById("products");
@@ -561,29 +486,24 @@ function scrollToProductItem(itemId) {
         block: "start",
       });
 
-      // Highlight the found item
       highlightSearchResult(itemId);
     }
   }, 300);
 }
 
-// Function to highlight search result
 function highlightSearchResult(itemId) {
   setTimeout(() => {
     // Find all cards
     const cards = document.querySelectorAll(".menu-card, .product-card-new");
 
     cards.forEach((card) => {
-      // Check if this card has the matching item ID
       const detailButton = card.querySelector(".item-detail-button");
       if (detailButton && detailButton.dataset.id == itemId) {
-        // Add highlight effect
         card.style.transition = "all 0.3s ease";
         card.style.transform = "scale(1.05)";
         card.style.boxShadow = "0 8px 30px rgba(182, 137, 91, 0.5)";
         card.style.border = "2px solid var(--primary)";
 
-        // Remove highlight after 2 seconds
         setTimeout(() => {
           card.style.transform = "scale(1)";
           card.style.boxShadow = "";
@@ -594,25 +514,21 @@ function highlightSearchResult(itemId) {
   }, 500);
 }
 
-// Function to show search notification
 function showSearchNotification(message, type = "info") {
-  // Remove existing notification if any
   const existingNotification = document.querySelector(".search-notification");
   if (existingNotification) {
     document.body.removeChild(existingNotification);
   }
 
-  // Create notification element
   const notification = document.createElement("div");
   notification.className = "search-notification";
   notification.textContent = message;
 
-  // Set color based on type
   let bgColor = "#333";
   if (type === "success") {
-    bgColor = "#4CAF50"; // Green for success
+    bgColor = "#4CAF50";
   } else if (type === "error") {
-    bgColor = "#f44336"; // Red for error
+    bgColor = "#f44336";
   }
 
   notification.style.cssText = `
@@ -632,7 +548,6 @@ function showSearchNotification(message, type = "info") {
 
   document.body.appendChild(notification);
 
-  // Remove notification after 2 seconds (lebih cepat untuk success)
   const duration = type === "success" ? 2000 : 3000;
   setTimeout(() => {
     notification.style.animation = "slideUp 0.3s ease";
@@ -644,7 +559,6 @@ function showSearchNotification(message, type = "info") {
   }, duration);
 }
 
-// Add CSS animations for notification
 const style = document.createElement("style");
 style.textContent = `
   @keyframes slideDown {
@@ -671,12 +585,9 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Update close search form handler agar tidak close saat click di dalam search box
 document.addEventListener("click", function (e) {
   const isClickSearchForm = searchForm && searchForm.contains(e.target);
   const isClickSearchButton = searchButton && searchButton.contains(e.target);
-
-  // Jangan tutup search form jika click di dalam search form atau search button
   if (!isClickSearchForm && !isClickSearchButton && searchForm) {
     searchForm.classList.remove("active");
   }
