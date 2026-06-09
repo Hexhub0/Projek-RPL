@@ -10,12 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    /**
-     * Menampilkan halaman login
-     */
     public function showLogin()
     {
-        // Jika sudah login, redirect sesuai role
         if (Auth::check()) {
             return $this->redirectBasedOnRole();
         }
@@ -23,9 +19,6 @@ class AuthController extends Controller
         return view('app');
     }
 
-    /**
-     * Proses login
-     */
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -69,9 +62,6 @@ class AuthController extends Controller
         ], 401);
     }
 
-    /**
-     * Proses register
-     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -104,7 +94,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'role' => 'user', // Default role adalah user
+                'role' => 'user',
             ]);
 
             return response()->json([
@@ -121,9 +111,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Proses logout
-     */
     public function logout(Request $request)
     {
         Auth::logout();
@@ -133,9 +120,6 @@ class AuthController extends Controller
         return redirect('/login')->with('success', 'Anda telah berhasil logout');
     }
 
-    /**
-     * Helper method untuk redirect berdasarkan role
-     */
     private function redirectBasedOnRole()
     {
         $user = Auth::user();
@@ -147,9 +131,6 @@ class AuthController extends Controller
         return redirect('/home');
     }
 
-    /**
-     * Forgot password (placeholder untuk implementasi nanti)
-     */
     public function forgotPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -166,9 +147,6 @@ class AuthController extends Controller
                 'message' => $validator->errors()->first()
             ], 422);
         }
-
-        // TODO: Implement password reset logic
-        // Untuk saat ini hanya return success message
         
         return response()->json([
             'success' => true,

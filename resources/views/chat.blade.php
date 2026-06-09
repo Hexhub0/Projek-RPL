@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat dengan DeepSeek AI - Beranda Coffee</title>
+    <title>Chat dengan Gemini AI - Beranda Coffee</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
@@ -91,7 +91,7 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <h2>🤖 DeepSeek AI Assistant</h2>
+            <h2>🤖 Gemini AI Assistant</h2>
             <p>Tanyakan apapun tentang kopi atau rekomendasi menu!</p>
         </div>
         
@@ -123,7 +123,7 @@
             const loadingDiv = addLoadingIndicator();
 
             try {
-                const response = await fetch('/deepseek/chat', {
+                const response = await fetch("{{ route('gemini.chat') }}", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -142,6 +142,11 @@
                 }
             } catch (error) {
                 loadingDiv.remove();
+                
+                // 1. TAMBAHKAN DUA BARIS INI UNTUK DEBUGGING
+                console.error("Detail Error Lengkap:", error);
+                alert("Terjadi error! Periksa Console (F12) untuk detailnya.");
+                
                 addMessage('Maaf, terjadi kesalahan koneksi. Silakan coba lagi.', 'bot');
             }
 
@@ -159,7 +164,7 @@
         function addLoadingIndicator() {
             const loadingDiv = document.createElement('div');
             loadingDiv.className = 'loading';
-            loadingDiv.innerHTML = '<em>🤔 DeepSeek sedang berpikir...</em>';
+            loadingDiv.innerHTML = '<em>🤔 Gemini sedang berpikir...</em>';
             chatMessages.appendChild(loadingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
             return loadingDiv;

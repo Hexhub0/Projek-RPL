@@ -13,7 +13,6 @@ class AdminController extends Controller
 
     public function transaksi()
     {
-        // Implementasi untuk halaman transaksi
         return view('admin.transaksi');
     }
 }

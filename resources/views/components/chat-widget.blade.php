@@ -1,4 +1,3 @@
-<!-- Floating Chat Widget -->
 <style>
     .chat-widget {
         position: fixed;
@@ -221,7 +220,7 @@
     <div class="chat-header">
         <h3>
             <i data-feather="bot" style="width: 18px; height: 18px;"></i>
-            DeepSeek AI Assistant
+            Gemini AI Assistant
         </h3>
         <button class="close-chat" id="closeChat">
             <i data-feather="x" style="width: 18px; height: 18px;"></i>
@@ -241,7 +240,6 @@
 </div>
 
 <script>
-    // Tunggu Feather Icons selesai load
     if (typeof feather !== 'undefined') {
         feather.replace();
     }
@@ -253,7 +251,6 @@
     const sendButton = document.getElementById('sendChat');
     const chatMessages = document.getElementById('chatMessages');
 
-    // Toggle chat panel
     chatButton.addEventListener('click', () => {
         chatPanel.classList.toggle('open');
         if (chatPanel.classList.contains('open')) {
@@ -267,7 +264,6 @@
         chatPanel.classList.remove('open');
     });
 
-    // Kirim pesan
     async function sendMessage() {
         const message = chatInput.value.trim();
         if (!message) return;
@@ -278,7 +274,7 @@
         const loadingId = showTypingIndicator();
 
         try {
-            const response = await fetch('/deepseek/chat', {
+            const response = await fetch('/gemini/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -316,7 +312,7 @@
         const typingDiv = document.createElement('div');
         typingDiv.id = id;
         typingDiv.className = 'message bot';
-        typingDiv.innerHTML = '<div class="typing-indicator">🤔 DeepSeek sedang berpikir...</div>';
+        typingDiv.innerHTML = '<div class="typing-indicator">🤔 Gemini sedang berpikir...</div>';
         chatMessages.appendChild(typingDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return id;

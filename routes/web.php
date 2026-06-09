@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\DeepSeekChatController;
+use App\Http\Controllers\GeminiChatController;
 
-Route::post('/deepseek/chat', [DeepSeekChatController::class, 'chat'])->name('deepseek.chat');
+Route::post('/gemini/chat', [GeminiChatController::class, 'chat'])->name('gemini.chat');
 
 Route::get('/chat', function () {
     return view('chat');
