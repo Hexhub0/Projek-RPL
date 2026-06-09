@@ -50,20 +50,21 @@ BerandaCoffee merupakan pengembangan platform layanan coffee shop berbentuk webs
 
 ### 4.1 Akses & Registrasi di awal karena akses utama dikunci dan pelanggan baru tidak bisa langsung memesan.
 #### 4.1.1 Buat Akun: Pada halaman login, pelanggan mengklik tautan "Belum punya akun? Daftar di sini".
-        <br>4.1.2 Isi Data: Jendela popup (modal) halaman DaftarAkun akan muncul. Pelanggan wajib mengisi:
-            <br>Nama Lengkap (untuk label pesanan).
-            <br>Alamat Email (sebagai ID pengguna).
-            <br>Password & Konfirmasi Password (untuk keamanan).
-        <br>4.1.3 Submit: Klik tombol "Daftar Sekarang" untuk membuat akun baru.
+#### 4.1.2 Isi Data: Jendela popup (modal) halaman DaftarAkun akan muncul. Pelanggan wajib mengisi:
+- Nama Lengkap (untuk label pesanan).
+- Alamat Email (sebagai ID pengguna).
+- Password & Konfirmasi Password (untuk keamanan).
+  
+#### 4.1.3 Submit: Klik tombol "Daftar Sekarang" untuk membuat akun baru.
    
-    <br>4.2 Autentikasi (Login) Setelah mendaftar atau bagi pelanggan lama:
-        <br>4.2.1 Pelanggan memasukkan Alamat Email dan Password pada halaman utama.
-        <br>4.2.2 Terdapat fitur "Ingat saya" agar pengguna tidak perlu login berulang kali di perangkat yang sama.
-        <br>4.2.3 Klik tombol "Masuk ke Akun" untuk masuk ke dalam sistem utama (Dashboard/Menu).
+### 4.2 Autentikasi (Login) Setelah mendaftar atau bagi pelanggan lama:
+- 4.2.1 Pelanggan memasukkan Alamat Email dan Password pada halaman utama.
+- 4.2.2 Terdapat fitur "Ingat saya" agar pengguna tidak perlu login berulang kali di perangkat yang sama.
+- 4.2.3 Klik tombol "Masuk ke Akun" untuk masuk ke dalam sistem utama (Dashboard/Menu).
    
-    <br>4.3 Pemesanan & Checkout (Proses dalam Sistem) Setelah berhasil masuk (berdasarkan alur standar aplikasi web sejenis):
-        <br>4.3.1 Pilih Menu: Pelanggan akan diarahkan ke halaman Beranda atau Menu untuk melihat daftar kopi yang tersedia.
-        <br>4.3.2 Masukkan Keranjang: Pelanggan memilih menu yang diinginkan beserta jumlahnya.
-        <br>4.3.3 Checkout: Pelanggan mengkonfirmasi pesanan dan melakukan pembayaran (atau memilih metode bayar).
-        <br>4.3.4 Pesanan Diterima: Sistem memproses pesanan, dan pelanggan menunggu kopi dibuat/dikirim.
+### 4.3 Pemesanan & Checkout (Proses dalam Sistem) Setelah berhasil masuk (berdasarkan alur standar aplikasi web sejenis):
+- 4.3.1 Pilih Menu: Pelanggan akan diarahkan ke halaman Beranda atau Menu untuk melihat daftar kopi yang tersedia.
+- 4.3.2 Masukkan Keranjang: Pelanggan memilih menu yang diinginkan beserta jumlahnya.
+- 4.3.3 Checkout: Pelanggan mengkonfirmasi pesanan dan melakukan pembayaran (atau memilih metode bayar).
+- 4.3.4 Pesanan Diterima: Sistem memproses pesanan, dan pelanggan menunggu kopi dibuat/dikirim.
 
