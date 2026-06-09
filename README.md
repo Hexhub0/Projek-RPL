@@ -39,12 +39,12 @@ BerandaCoffee merupakan pengembangan platform layanan coffee shop berbentuk webs
 - Blade
    
 ### 3.2 Development Tools
-       3.2.1 Visual Code Studio
-       3.2.2 Git dan GitHub
-       3.2.3 Laravel (Framework Backend)
-       3.2.4 Blade Template Engine
-       3.2.5 Vite (Frontend build tool)
-       3.2.6 Putty
+- 3.2.1 Visual Code Studio
+- 3.2.2 Git dan GitHub
+- 3.2.3 Laravel (Framework Backend)
+- 3.2.4 Blade Template Engine
+- 3.2.5 Vite (Frontend build tool)
+- 3.2.6 Putty
    
 ## 4. Cara Mengoperasikan Website
 
