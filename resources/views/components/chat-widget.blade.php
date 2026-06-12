@@ -251,6 +251,9 @@
     const sendButton = document.getElementById('sendChat');
     const chatMessages = document.getElementById('chatMessages');
 
+    // 1. TAMBAHKAN DI SINI: Variabel global untuk status pengiriman
+    let isSending = false;
+
     chatButton.addEventListener('click', () => {
         chatPanel.classList.toggle('open');
         if (chatPanel.classList.contains('open')) {
@@ -266,7 +269,14 @@
 
     async function sendMessage() {
         const message = chatInput.value.trim();
-        if (!message) return;
+        
+        // 2. PERBARUI DI SINI: Jika pesan kosong ATAU sedang mengirim, langsung batalkan proses
+        if (!message || isSending) return;
+
+        // 3. TAMBAHKAN DI SINI: Kunci sistem dan matikan elemen input/tombol
+        isSending = true;
+        chatInput.disabled = true;
+        sendButton.disabled = true;
 
         addMessage(message, 'user');
         chatInput.value = '';
@@ -294,6 +304,13 @@
         } catch (error) {
             removeTypingIndicator(loadingId);
             addMessage('Maaf, terjadi kesalahan koneksi. Silakan coba lagi.', 'bot');
+        } finally {
+            // 4. TAMBAHKAN DI SINI: Blok ini akan selalu dijalankan baik sukses maupun error
+            // Membuka kembali kunci sistem dan mengaktifkan kembali input/tombol
+            isSending = false;
+            chatInput.disabled = false;
+            sendButton.disabled = false;
+            chatInput.focus(); // Kembalikan kursor fokus ke input teks
         }
 
         chatMessages.scrollTop = chatMessages.scrollHeight;
