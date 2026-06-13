@@ -25,7 +25,7 @@ class GeminiService
         try {
             $response = Http::timeout(30)
                 ->withOptions(['verify' => false])
-                ->post($this->baseUrl . "/models/gemini-2.0-flash:generateContent?key=" . $this->apiKey, [
+                ->post($this->baseUrl . "/models/gemini-2.5-flash:generateContent?key=" . $this->apiKey, [
                     'contents' => [
                         [
                             'parts' => [

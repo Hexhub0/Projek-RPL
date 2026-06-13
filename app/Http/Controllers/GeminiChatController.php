@@ -39,8 +39,8 @@ class GeminiChatController extends Controller
 
         Cache::put($lockKey, true, 5);
 
-        // Gunakan model stabil gemini-2.0-flash di v1beta
-        $googleModel = 'gemini-2.0-flash';
+        // Gunakan model stabil gemini-2.5-flash di v1beta
+        $googleModel = 'gemini-2.5-flash';
         $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{$googleModel}:generateContent?key={$apiKey}";
 
         // Perintah mutlak untuk mengunci topik Kopi
